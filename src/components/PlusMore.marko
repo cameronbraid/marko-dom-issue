@@ -16,9 +16,13 @@ class {
   }
 
   handleToggle(event) {
-    if (this.state.controlled) return
-    this.state.showing = !this.state.showing;
-    this.emit("toggle", this.state.showing)
+    if (this.state.controlled) {
+      this.emit("toggle", !this.state.showing)
+    }
+    else {
+      this.state.showing = !this.state.showing;
+      this.emit("change", this.state.showing)
+    }
   }
 }
 <span class=['turbo-toggler', input.class]>
