@@ -1,0 +1,19 @@
+import { ArrayModel } from "../ArrayModel"
+class {
+    onCreate() {
+        this.arrayModel = new ArrayModel(this)
+    }
+}
+$ const arrayModel = component.arrayModel
+<div.ArrayModel>
+  ${arrayModel.values.length}
+  <hr>
+  <div for(value in arrayModel.values)>
+      ${value}
+      <for(let i = 0 ; i < value; i++)>
+        <Box-even if( i % 2 == 0)/>
+        <Box-odd else/>
+      </for>
+    <hr>
+  </div>
+</div>

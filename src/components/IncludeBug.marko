@@ -1,0 +1,73 @@
+static {
+    const items = [{
+        name:'one',
+        show: 'one-showing',
+        foo: 1,
+    },{
+        name:'two',
+        show: '2',
+        foo: 3,
+    },{
+        name:'three',
+        show: '3',
+        foo: 4,
+    },{
+        name:'four',
+        show: '4',
+        foo: 4,
+    },{
+        name:'five',
+        show: '5',
+        foo: 4,
+    },{
+        name:'six',
+        show: '6',
+        foo: 4,
+    }]
+}
+class {
+    onCreate() {
+        this.state = {
+            count : 0,
+        }
+    }
+    changeState() {
+        this.state.count ++ 
+    }
+}
+<div>
+    Steps
+    <ul>
+        <li>click <b>Items</b> button</li>
+        <li>then forceUpdate or changeState once</li>
+        <li>then click the <b>two</b> button  a few times</li>
+        <li>watch the other items disappear</li>
+
+    </ul>
+    <button on-click('forceUpdate')>forceUpdate</button>
+    <button on-click('changeState')>changeState ${state.count}</button>
+    <hr>
+    <PlusMore>
+        <@trigger>
+            <button>Items</button>
+        </@trigger>
+        <@show>
+            <div>
+                <for(item in items)>
+                    <if(item.foo> 2)>
+                        <PlusMore>
+                            <@trigger>
+                                <button>${item.name}</button>
+                            </@trigger>
+                            <@show>
+                                <span>&nbsp;${item.show}</span>
+                            </@show>
+                        </PlusMore>
+                        <br>
+                    </if>
+                </for>
+            </div>
+            <hr>
+        </@show>
+    </PlusMore>
+</div>

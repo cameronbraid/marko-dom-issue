@@ -1,0 +1,15 @@
+class {
+}
+$ {
+  const hostname = out.global.req ? out.global.req.hostname : window.location.hostname
+}
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+  </head>
+  <body>
+    <Bugs/>
+    <script src="//${hostname}:3001/static/bundle.js"></script>
+  </body>
+</html>

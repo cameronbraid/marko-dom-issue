@@ -1,0 +1,38 @@
+class {
+  onCreate(input) {
+    this.state = {
+      showing : input.showing === undefined ? false : input.showing,
+      controlled: input.showing != undefined,
+    }
+  }
+  onInput(input) {
+    if (input.showing != undefined) {
+      this.state.controlled = true
+      this.state.showing = input.showing
+    }
+    else {
+      this.state.controlled = false
+    }
+  }
+
+  handleToggle(event) {
+    if (this.state.controlled) return
+    this.state.showing = !this.state.showing;
+    this.emit("toggle", this.state.showing)
+  }
+}
+<span class=['turbo-toggler', input.class]>
+  <span on-click('handleToggle')>
+    <i if(state.showing) class='turbo-toggler-icon icon-dn-minus-less'>-</i>
+    <i if(!state.showing) class='turbo-toggler-icon icon-dn-plus-more'>+</i>
+    <span class='turbo-toggler-trigger'><include(input.trigger)/></span>
+  </span>
+  <include(input.before) if(input.before)/>
+  <span if(state.showing) key='show' class='turbo-toggler-content turbo-toggler-content-show'>
+    <include(input.show)/>
+  </span>
+  <span if(!state.showing) key='hide' class='turbo-toggler-content turbo-toggler-content-hide'>
+    <include(input.hide)/>
+  </span>
+  <include(input.after) if(input.after)/>
+</span>

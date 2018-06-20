@@ -1,0 +1,46 @@
+static const queryString = require("query-string")
+<fieldset>
+    <p><a href='/'>HOME</a></p>
+    <p>This project demonstrates 3 bugs</p>
+    <ol>
+        <li>
+            <a href='/PartialHtmlCommentPage'>Partial Html comment</a>
+        </li>
+        <li>
+            <a href='/?variation=bug-2'>Failed to execute 'insertBefore' on 'Node' example 2 - happens quickly</a><br>
+            <a href='/?variation=bug-1'>Failed to execute 'insertBefore' on 'Node' example 1 - happens after some time</a><br>
+            And some workarounds for this bug<br>
+            $ const variations = ['working-1','working-2','working-3']
+            <for(variation in variations)>
+                <a href='?variation=${variation}'>${variation}</a><br>
+            </for>
+        </li>
+        <li>
+            <a href='/?variation=IncludeBug'>Include/Transclude Bug</a>
+        </li>
+    </ol>
+</fieldset>
+<if(typeof(window) != 'undefined')>
+    $ const variation = queryString.parse(location.search).variation
+    <if(variation)>
+        <h1>${variation}</h1>
+        <if(variation == 'working-1')>
+            <ArrayModel-working-1/>
+        </if>
+        <else if(variation == 'working-2')>
+            <ArrayModel-working-2/>
+        </else>
+        <else if(variation == 'working-3')>
+            <ArrayModel-working-3/>
+        </else>
+        <else if(variation == 'bug-1')>
+            <ArrayModel-bug-1/>
+        </else>
+        <else if(variation == 'bug-2')>
+            <ArrayModel-bug-2/>
+        </else>
+        <else if(variation == 'IncludeBug')>
+            <IncludeBug/>
+        </else>
+    </if>
+</if>
