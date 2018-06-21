@@ -1,3 +1,5 @@
+process.env.MARKO_DEBUG='true'
+
 require('app-module-path').addPath(__dirname);
 require('marko/express');
 require('marko/node-require');
@@ -25,11 +27,12 @@ app.use('/static', serveStatic(__dirname + '/static'));
 var App = require('./components/App.marko');
 var PartialHtmlCommentPage = require('./components/PartialHtmlCommentPage.marko');
 var PartialHtmlCommentPageServerOnly = require('./components/PartialHtmlCommentPageServerOnly.marko');
+var PartialHtmlCommentSimple = require('./components/PartialHtmlCommentSimple.marko');
 
 // Map the "/" route to the home page
 app.get('/', function(req, res) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.marko(App, {});
+    res.marko(App, {a:1});
 });
 
 app.get('/PartialHtmlCommentPage', function(req, res) {
@@ -40,6 +43,12 @@ app.get('/PartialHtmlCommentPageServerOnly', function(req, res) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.marko(PartialHtmlCommentPageServerOnly, {});
 });
+
+app.get('/PartialHtmlCommentSimple', function(req, res) {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.marko(PartialHtmlCommentSimple, {});
+});
+
 
 app.listen(port, function(err) {
     if (err) {

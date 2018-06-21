@@ -1,3 +1,6 @@
-require('src/components/App.marko');
-require('src/components/PartialHtmlCommentPage.marko');
-require('marko/components').init();
+if (!window.initDone) {
+    // debugger
+    window.initDone = true
+    require('src/components/App.marko');
+    require('marko/components').init();
+}
