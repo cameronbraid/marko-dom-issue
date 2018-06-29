@@ -6,7 +6,9 @@ static const queryString = require("query-string")
     <p>This project demonstrates 2 bugs</p>
     <ol>
         <li>
-            <a href='/?variation=bug-2'>Failed to execute 'insertBefore' on 'Node' example 2 - happens quickly</a><br>
+            <a style="text-decoration: line-through;" href='/?variation=bug-2'>(fixed in 4.11.4) Failed to execute 'insertBefore' on 'Node' example 2 - happens quickly</a><br>
+        </li>
+        <li>
             <a href='/?variation=bug-1'>Failed to execute 'insertBefore' on 'Node' example 1 - happens after some time</a><br>
             And some workarounds for this bug<br>
             $ const variations = ['working-1','working-2','working-3']
@@ -15,7 +17,7 @@ static const queryString = require("query-string")
             </for>
         </li>
         <li>
-            <a href='/?variation=IncludeBug'>Include/Transclude Bug</a>
+            <a style="text-decoration: line-through;" href='/?variation=IncludeBug'>(fixed in 4.11.4) Include/Transclude Bug</a>
         </li>
     </ol>
 </fieldset>

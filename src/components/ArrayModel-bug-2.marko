@@ -2,7 +2,12 @@ import { ArrayModel } from "../ArrayModel"
 class {
     onCreate() {
         this.arrayModel = new ArrayModel(this)
+        window.c = this
     }
+    onRender() {
+      //console.log("[" + this.arrayModel.array.join(", ") + "]")
+    }
+
 }
 $ const arrayModel = component.arrayModel
 <div.ArrayModel>

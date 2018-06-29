@@ -10,6 +10,7 @@ export class ArrayModel {
 
     constructor(component) {
         this.component = component
+        // this.array = [0,0,0]
         this.array = []
         this.mutateStructure()
         this.mutateValues()
